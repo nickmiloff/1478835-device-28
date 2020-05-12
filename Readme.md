@@ -1,7 +1,7 @@
 # Личный проект «Девайс»
 
-* Студент: [Никита Милованов](https://up.htmlacademy.ru/htmlcss/28/user/1478835).
-* Наставник: `Неизвестно`.
+- Студент: [Никита Милованов](https://up.htmlacademy.ru/htmlcss/28/user/1478835).
+- Наставник: [Станислав Кузнецов](https://htmlacademy.ru/profile/id237925).
 
 ---
 
