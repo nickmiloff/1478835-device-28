@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <title>HTML Academy: Девайс</title>
-  </head>
-  <body>
 
-    <p>Репозиторий создан для обучения на профессиональном онлайн‑курсе «<a href="https://htmlacademy.ru/intensive/htmlcss">HTML и CSS, уровень 1</a>».</p>
+<head>
+  <meta charset="utf-8">
+  <title>HTML Academy: Девайс - Главная</title>
+</head>
 
-  </body>
+<body>
+
+  <header class="main-header">
+    <nav>
+      <a>
+        <img src="img/main-logo.svg" alt="Логотип DEVICE" width="164" height="35">
+      </a>
+      <!-- Я думаю, что здесь вместо тега p должен быть тег form, но нас просили не использовать его -->
+      <p>
+        <input type="search" name="searc-area" id="searc-area" placeholder="Поиск по сайту">
+        <button type="submit">Найти</button>
+      </p>
+      <a href="">Вход</a>
+      <a href="">Сравнить</a>
+      <a href="">Корзина</a>
+      <ul>
+        <li>
+          <a href="catalog.html">Каталог товаров</a>
+          <ul>
+            <li><a href="">Виртуальная реальность</a></li>
+            <li><a href="catalog.html">Моноподы для селфи</a></li>
+            <li><a href="">Экшн-камеры</a></li>
+            <li><a href="">Фитнес-браслеты</a></li>
+            <li><a href="">Умные часы</a></li>
+            <li><a href="">Квадрокоптер</a></li>
+          </ul>
+        </li>
+        <li><a href="">Доставка</a></li>
+        <li><a href="">Гарантия</a></li>
+        <li><a href="">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Интернет-магазин гаджетов "Device"</h1>
+    <section>
+      <h2>О нас</h2>
+      <p>
+        Огромный выбор гаджетов не оставит равнодушным гика,<br>
+        который есть в каждом из нас.
+      </p>
+      <p>
+        Мы можем доставить ваш товар в самые отдаленные точки<br>
+        России! DEVICE работает со многими транспортными компаниями:
+      </p>
+      <ul>
+        <li>Деловые линии</li>
+        <li>Автотрейдинг</li>
+        <li>ЖелДорЭкспедиция</li>
+      </ul>
+      <a href="">Подробнее о нас</a>
+    </section>
+    <section>
+      <h2>Контакты</h2>
+      <p>
+        Вы можете забрать товар сами, заехав в наш офис. Заодно, вы сможете<br>
+        проверить работоспособность покупки. Всякое бывает.
+      </p>
+      <a href="">
+        <img src="https://via.placeholder.com/560x222" alt="Карта" width="560" height="222">
+      </a>
+      <a href="">Напишите нам</a>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <!-- Возможно нужно объединить лого, ссылки(вход,...), и список(Доставка,...) в nav -->
+    <!-- А остальное в отдельный section -->
+    <!-- Если это не помешает стилизации, а именно расстановке элементов -->
+    <a>
+      <img src="img/main-logo.svg" alt="Логотип DEVICE" width="164" height="35">
+    </a>
+    <a href="">Вход</a>
+    <a href="">Сравнить</a>
+    <a href="">Корзина</a>
+    <p>
+      Г. Москва, ул. Строителей, 15
+    </p>
+    <ul>
+      <li><a href="">Доставка</a></li>
+      <li><a href="">Гарантия</a></li>
+      <li><a href="">Контакты</a></li>
+    </ul>
+    <p>
+      Тел.: +7 (495) 495-95-95
+    </p>
+    <ul>
+      <li>
+        <a href="#">Вконтакте</a>
+      </li>
+      <li>
+        <a href="#">Фейсбук</a>
+      </li>
+      <li>
+        <a href="#">Инстаграм</a>
+      </li>
+    </ul>
+    <a href="https://htmlacademy.ru/intensive/htmlcss">
+      <img src="img/htmlacademy-logo.svg" alt="Логотип HTMLacademy" width="27" height="34">
+    </a>
+  </footer>
+
+</body>
+
 </html>
