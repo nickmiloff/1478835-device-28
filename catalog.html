@@ -51,77 +51,112 @@
         </ul>
 
         <section>
-            <h2>Фильтр товаров</h2>
+            <h2>Фильтр:</h2>
             <!-- Тут скорее должен быть тег form и в нём fieldset,но нас просили их не использовать -->
+            <h3>Стоимость</h3>
+            <!-- Как я понял полоска и две кнопки строятся на div'ах, поэтому до стилизации нет смысла их вставлять -->
+            <ul>
+                <li><label>от <input type="text" name="price" value="0"></label></li>
+                <li><label>до <input type="text" name="price" value="5000"></label></li>
+            </ul>
             <h3>Цвет</h3>
             <ul>
-                <li><label><input type="checkbox" name="color" value="Чёрный">Чёрный</label></li>
+                <li><label><input type="checkbox" name="color" value="Чёрный" checked>Чёрный</label></li>
                 <li><label><input type="checkbox" name="color" value="Белый">Белый</label></li>
-                <li><label><input type="checkbox" name="color" value="Синий">Синий</label></li>
-                <li><label><input type="checkbox" name="color" value="Красный">Красный</label></li>
+                <li><label><input type="checkbox" name="color" value="Синий" checked>Синий</label></li>
+                <li><label><input type="checkbox" name="color" value="Красный" checked>Красный</label></li>
                 <li><label><input type="checkbox" name="color" value="Розовый">Розовый</label></li>
             </ul>
             <h3>Bluetooth</h3>
             <ul>
-                <li><label><input type="radio" name="bluetooth" value="Есть">Есть</label></li>
+                <li><label><input type="radio" name="bluetooth" value="Есть" checked>Есть</label></li>
                 <li><label><input type="radio" name="bluetooth" value="Нет">Нет</label></li>
             </ul>
             <input type="button" value="Показать">
         </section>
+
+        <section>
+            <h2>Сортировка</h2>
+            <ul>
+                <li><label><input type="radio" name="param" checked>По цене</label></li>
+                <li><label><input type="radio" name="param">По типу</label></li>
+                <li><label><input type="radio" name="param">По популярности</label></li>
+            </ul>
+            <ul>
+                <li><label><input type="radio" name="param-value">&uarr;</label></li>
+                <li><label><input type="radio" name="param-value" checked>&darr;</label></li>
+            </ul>
+        </section>
+
         <section>
             <h2>Список моноподов для селфи</h2>
-            <!-- Если я правильно понял, то по нажатию на картинку происходить ничего
-                 не должно, т.к. при наведении на неё появляются кнопки, поэтому
-                 картинка не должна быть ссылкой. Только название товара и цена. -->
             <ul>
                 <li>
-                    <a href="">
-                        <h3>Любительская селфи-палка</h3>
+                    <article>
+                        <a href="">
+                            <h3>Любительская селфи-палка</h3>
+                        </a>
                         <p>500 руб.</p>
-                    </a>
-                    <img src="https://via.placeholder.com/360x380" alt="Любительская селфи-палка" width="360"
-                        height="380">
-                    <button type="button">В корзину</button>
-                    <button type="button">Добавить к сравнению</button>
+                        <img src="https://via.placeholder.com/360x380" alt="Любительская селфи-палка" width="360"
+                            height="380">
+                        <button type="button">В корзину</button>
+                        <button type="button">Добавить к сравнению</button>
+                    </article>
                 </li>
                 <li>
-                    <a href="">
-                        <h3>Профессиональная селфи-палка</h3>
+                    <article>
+                        <a href="">
+                            <h3>Профессиональная селфи-палка</h3>
+                        </a>
                         <p>1500 руб.</p>
-                    </a>
-                    <img src="https://via.placeholder.com/360x380" alt="Профессиональная селфи-палка" width="360"
-                        height="380">
-                    <button type="button">В корзину</button>
-                    <button type="button">Добавить к сравнению</button>
-                </li>
+                        <img src="https://via.placeholder.com/360x380" alt="Профессиональная селфи-палка" width="360"
+                            height="380">
+                        <button type="button">В корзину</button>
+                        <button type="button">Добавить к сравнению</button>
+                    </li>
+                    </article>
                 <li>
-                    <a href="">
-                        <h3>Непотопляемая селфи-палка</h3>
+                    <article>
+                        <a href="">
+                            <h3>Непотопляемая селфи-палка</h3>
+                        </a>
                         <p>2500 руб.</p>
-                    </a>
-                    <img src="https://via.placeholder.com/360x380" alt="Непотопляемая селфи-палка" width="360"
-                        height="380">
-                    <button type="button">В корзину</button>
-                    <button type="button">Добавить к сравнению</button>
+                        <img src="https://via.placeholder.com/360x380" alt="Непотопляемая селфи-палка" width="360"
+                            height="380">
+                        <button type="button">В корзину</button>
+                        <button type="button">Добавить к сравнению</button>
+                    </article>
                 </li>
                 <li>
-                    <a href="">
-                        <h3>Селфи-палка «Следуй за мной»</h3>
+                    <article>
+                        <a href="">
+                            <h3>Селфи-палка «Следуй за мной»</h3>
+                        </a>
                         <p>4900 руб.</p>
-                    </a>
-                    <img src="https://via.placeholder.com/360x380" alt="Селфи-палка «Следуй за мной»" width="360"
-                        height="380">
-                    <button type="button">В корзину</button>
-                    <button type="button">Добавить к сравнению</button>
+                        <img src="https://via.placeholder.com/360x380" alt="Селфи-палка «Следуй за мной»" width="360"
+                            height="380">
+                        <button type="button">В корзину</button>
+                        <button type="button">Добавить к сравнению</button>
+                    </article>
                 </li>
             </ul>
         </section>
+
+        <section>
+            <h2>Навигация по товарам</h2>
+            <!-- Тут скорее должен быть тег form -->
+            <button type="button" disabled>Назад</button>
+            <ul>
+                <li><a>1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+            </ul>
+            <button type="button">Вперед</button>
+        </section>
+
     </main>
 
     <footer class="main-footer">
-        <!-- Возможно нужно объединить лого, ссылки(вход,...), и список(Доставка,...) в nav -->
-        <!-- А остальное в отдельный section -->
-        <!-- Если это не помешает стилизации, а именно расстановке элементов -->
         <a>
             <img src="img/main-logo.svg" alt="Логотип DEVICE" width="163" height="35">
         </a>
