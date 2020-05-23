@@ -79,77 +79,52 @@
                     <legend>
                         Стоимость
                     </legend>
-                    <!-- Вероятнее всего здесь должны быть два пина и полоса, сделанные на дивах,
-                         и оформленные в css как полоса контроля стоимости -->
-                    <ul>
-                        <li>
-                            <label>
-                                от 
-                                <input type="text" name="price" value="0">
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                до 
-                                <input type="text" name="price" value="5000">
-                            </label>
-                        </li>
-                    </ul>
+                    <label>
+                        от 
+                        <input type="text" name="price" value="0">
+                    </label>
+                    <label>
+                        до 
+                        <input type="text" name="price" value="5000">
+                    </label>
                 </fieldset>
                 <fieldset>
                     <legend>
                         Цвет
                     </legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="color" value="Чёрный" checked>
-                                Чёрный
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="color" value="Белый">
-                                Белый
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="color" value="Синий" checked>
-                                Синий
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="color" value="Красный" checked>
-                                Красный
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="color" value="Розовый">
-                                Розовый
-                            </label>
-                        </li>
+                    <label>
+                        <input type="checkbox" name="color" value="Чёрный" checked>
+                        Чёрный
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Белый">
+                        Белый
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Синий" checked>
+                        Синий
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Красный" checked>
+                        Красный
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Розовый">
+                        Розовый
+                    </label>
                 </fieldset>
                 <fieldset>
                     <legend>
                         Bluetooth
                     </legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="radio" name="bluetooth" value="Есть" checked>
-                                Есть
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="bluetooth" value="Нет">
-                                Нет
-                            </label>
-                        </li>
-                    </ul>
+                    <label>
+                        <input type="radio" name="bluetooth" value="Есть" checked>
+                        Есть
+                    </label>
+                    <label>
+                        <input type="radio" name="bluetooth" value="Нет">
+                        Нет
+                    </label>
                 </fieldset>
                 <button type="submit">Показать</button>
             </form>
@@ -157,52 +132,35 @@
 
         <section>
             <h2>Сортировка:</h2>
-            <form action="https://echo.htmlacademy.ru" method="GET">
-                <fieldset>
-                    <legend class="visually-hidden">
-                        Параметр сортировки
-                    </legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="radio" name="param" checked>
-                                По цене
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="param">
-                                По типу
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="param">
-                                По популярности
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset>
-                    <legend class="visually-hidden">
-                        Выбор: сортировка по возрастанию или по убыванию
-                    </legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="radio" name="param-value">
-                                &uarr;
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="param-value" checked>
-                                &darr;
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-            </form>
+            <ul>
+                <li>
+                    <a href="">
+                        По цене
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        По типу
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        По популярности
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">
+                        &uarr;
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        &darr;
+                    </a>
+                </li>
+            </ul>
         </section>
 
         <section>
@@ -253,8 +211,7 @@
 
         <section>
             <h2 class="visually-hidden">Навигация по товарам</h2>
-            <!-- Решил тут оставить без формы -->
-            <button type="button" disabled>Назад</button>
+            <a href="">Назад</a>
             <ul>
                 <li>
                     <a>1</a>
@@ -266,7 +223,7 @@
                     <a href="">3</a>
                 </li>
             </ul>
-            <button type="button">Вперед</button>
+            <a href="">Вперед</a>
         </section>
 
     </main>
