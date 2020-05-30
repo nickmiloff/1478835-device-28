@@ -254,8 +254,7 @@ a {
 
 .button:focus {
     box-shadow: 
-        0 0 2px 1px var(--special-yellow-dark),
-        inset 0 0 0 2px var(--special-yellow-dark);
+        0 0 2px 2px var(--special-yellow-dark);
 }
 
 .popup {
@@ -409,12 +408,25 @@ body {
     justify-content: flex-end;
 }
 
-.user-nav__link:not(:first-child) {
+.user-nav__link:not(:first-child):not(.user-nav__link--exit) {
     margin-left: 41px;
 }
 
 .user-nav__link:first-child {
     margin-right: auto;
+}
+
+.user-nav__auth-user {
+    margin-right: auto;
+}
+
+.user-nav--footer .user-nav__auth-user {
+    margin-right: 0px;
+}
+
+.user-nav__link--exit {
+    margin-left: 18px;
+    opacity: 0.3;
 }
 
 .main-nav {
@@ -692,6 +704,7 @@ body {
     position: absolute;
     top: -80px;
     right: 16px;
+    z-index: 1;
 
     background-color: var(--basic-black);
 }
@@ -1436,6 +1449,7 @@ input::-webkit-inner-spin-button {
     opacity: 0.3;
 }
 
+.user-nav__link--exit:active,
 .sort-by__link:active,
 .sort-by__link--active,
 .sort-direction__link:active,
@@ -1450,7 +1464,7 @@ input::-webkit-inner-spin-button {
     opacity: 0.1;
 }
 
-.user-nav__link::before {
+.user-nav__link:not(.user-nav__link--exit)::before {
     content: "icon";
 
     display: inline-block;
