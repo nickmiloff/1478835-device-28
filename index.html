@@ -338,33 +338,33 @@
 
   <section class="write-us popup">
     <h2 class="visually-hidden">Форма обратной связи</h2>
-    <button type="button" aria-label="Закрыть"></button>
+    <button class="popup__button--close" type="button" aria-label="Закрыть"></button>
     <form action="https://echo.htmlacademy.ru/" method="POST">
-      <label>
+      <label class="popup__title">
         Ваше имя:
         <input type="text" name="write-us-name" placeholder="Имя Фамилия">
       </label>
-      <label>
+      <label class="popup__title">
         Ваш e-mail:
         <input type="email" name="write-us-email" placeholder="email@example.com">
       </label>
-      <label>
+      <label class="popup__title">
         Текст письма:
-        <textarea name="letter-text" cols="30" rows="10" placeholder="В свободной форме"></textarea>
+        <textarea name="write-us-text" cols="760" rows="8" placeholder="В свободной форме"></textarea>
       </label>
-      <button type="submit">отправить</button>
+      <button class="button button--popup" type="submit">отправить</button>
     </form>
   </section>
 
   <section class="map popup">
     <h2 class="visually-hidden">Магазин на карте</h2>
-    <button type="button" aria-label="Закрыть"></button>
+    <button class="popup__button--close" type="button" aria-label="Закрыть"></button>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.1125488779953!2d37.52742931625985!3d55.68703098053586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54cf65f5c8955%3A0x694710ccd55501e!2z0YPQuy4g0KHRgtGA0L7QuNGC0LXQu9C10LksIDE1LCDQnNC-0YHQutCy0LAsIDExOTMxMQ!5e0!3m2!1sru!2sru!4v1590094317373!5m2!1sru!2sru" 
-    width="600" height="450" style="border:0;" allowfullscreen="" 
+    width="960" height="560" style="border:0;" allowfullscreen="" 
     aria-hidden="false" tabindex="0"></iframe>
-    <button type="button">Напишите нам</button>
   </section>
 
+  <script src="js/script.js"></script>
 </body>
 
 </html>

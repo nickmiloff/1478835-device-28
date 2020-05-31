@@ -43,9 +43,13 @@ var secondPin = {
           return x;}
 }
 
-var MIN = 0;
-var MAX = line.offsetWidth - firstPin.pin.offsetWidth;
-var maxPrice = firstPin.value.max;
+try {
+  var MIN = 0;
+  var MAX = line.offsetWidth - firstPin.pin.offsetWidth;
+  var maxPrice = firstPin.value.max;
+} catch {
+  console.log("Is no catalog page");
+}
 
 var sliderHandler = function (evt) {
   evt.preventDefault();
@@ -93,4 +97,20 @@ document.querySelectorAll(".value-level__value").forEach(function (value) {
 
 document.querySelectorAll(".value-level__pin").forEach(function (pin) {
   pin.addEventListener("mousedown", function (evt) { sliderHandler(evt); })
+});
+// -------------------------------------------------------------------------
+document.querySelectorAll(".popup__button--close").forEach(function (button) {
+  button.addEventListener("click", function () {
+    button.closest(".popup").classList.remove("popup--active");
+  })
+});
+
+document.querySelector(".contacts__map").addEventListener("click", function (evt) {
+  evt.preventDefault();
+  document.querySelector(".map.popup").classList.add("popup--active");
+});
+
+document.querySelector(".button--contacts").addEventListener("click", function (evt) {
+  evt.preventDefault();
+  document.querySelector(".write-us.popup").classList.add("popup--active");
 });
