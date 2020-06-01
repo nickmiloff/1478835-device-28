@@ -37,29 +37,35 @@
           </a>
         </div>
         <nav class="main-nav">
-          <ul class="main-nav__list">
+          <ul class="main-nav__list main-nav__item--dropdown">
             <li class="main-nav__item">
               <a href="catalog.html" class="main-nav__link main-nav__link--dropdown">Каталог товаров</a>
-              <ul class="hidden">
-                <li>
-                  <a href="">Виртуальная реальность</a>
-                </li>
-                <li>
-                  <a href="catalog.html">Моноподы для селфи</a>
-                </li>
-                <li>
-                  <a href="">Экшн-камеры</a>
-                </li>
-                <li>
-                  <a href="">Фитнес-браслеты</a>
-                </li>
-                <li>
-                  <a href="">Умные часы</a>
-                </li>
-                <li>
-                  <a href="">Квадрокоптер</a>
-                </li>
-              </ul>
+              <div class="dropdown__list">
+                <ul class="dropdown__column">
+                  <li>
+                    <a href="">Виртуальная реальность</a>
+                  </li>
+                  <li>
+                    <a href="catalog.html">Моноподы для селфи</a>
+                  </li>
+                  <li>
+                    <a href="">Экшн-камеры</a>
+                  </li>
+                </ul>
+                <ul class="dropdown__column">
+                  <li>
+                    <a href="">Фитнес-браслеты</a>
+                  </li>
+                  <li>
+                    <a href="">Умные часы</a>
+                  </li>
+                </ul>
+                <ul class="dropdown__column">
+                  <li>
+                    <a href="">Квадрокоптер</a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="main-nav__item">
               <a href="" class="main-nav__link">Доставка</a>
@@ -122,29 +128,29 @@
                     <h3 class="filter__subtitle">
                         Цвет
                     </h3>
-                    <input class="filter__checkbox" type="checkbox" name="color" id="color-checkbox-1" value="Чёрный" checked>
+                    <input class="filter__checkbox visually-hidden" type="checkbox" name="color" id="color-checkbox-1" value="Чёрный" checked>
                     <label class="filter__checkbox-label" for="color-checkbox-1">Чёрный</label>
 
-                    <input class="filter__checkbox" type="checkbox" name="color" id="color-checkbox-2" value="Белый">
+                    <input class="filter__checkbox visually-hidden" type="checkbox" name="color" id="color-checkbox-2" value="Белый">
                     <label class="filter__checkbox-label" for="color-checkbox-2">Белый</label>
 
-                    <input class="filter__checkbox" type="checkbox" name="color" id="color-checkbox-3" value="Синий" checked>
+                    <input class="filter__checkbox visually-hidden" type="checkbox" name="color" id="color-checkbox-3" value="Синий" checked>
                     <label class="filter__checkbox-label" for="color-checkbox-3">Синий</label>
 
-                    <input class="filter__checkbox" type="checkbox" name="color" id="color-checkbox-4" value="Красный" checked>
+                    <input class="filter__checkbox visually-hidden" type="checkbox" name="color" id="color-checkbox-4" value="Красный" checked>
                     <label class="filter__checkbox-label" for="color-checkbox-4">Красный</label>
                     
-                    <input class="filter__checkbox" type="checkbox" name="color" id="color-checkbox-5" value="Розовый">
+                    <input class="filter__checkbox visually-hidden" type="checkbox" name="color" id="color-checkbox-5" value="Розовый">
                     <label class="filter__checkbox-label" for="color-checkbox-5">Розовый</label>
                 </fieldset>
                 <fieldset class="filter__item">
                     <h3 class="filter__subtitle">
                         Bluetooth
                     </h3>
-                    <input class="filter__radio" type="radio" name="bluetooth" id="bluetooth-radio-1" value="Есть" checked >
+                    <input class="filter__radio visually-hidden" type="radio" name="bluetooth" id="bluetooth-radio-1" value="Есть" checked >
                     <label class="filter__radio-label" for="bluetooth-radio-1">Есть</label>
 
-                    <input class="filter__radio" type="radio" name="bluetooth" id="bluetooth-radio-2" value="Нет">
+                    <input class="filter__radio visually-hidden" type="radio" name="bluetooth" id="bluetooth-radio-2" value="Нет">
                     <label class="filter__radio-label" for="bluetooth-radio-2">Нет</label>
                 </fieldset>
                 <button class="button button--filter" type="submit">Показать</button>

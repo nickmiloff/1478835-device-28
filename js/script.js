@@ -99,18 +99,63 @@ document.querySelectorAll(".value-level__pin").forEach(function (pin) {
   pin.addEventListener("mousedown", function (evt) { sliderHandler(evt); })
 });
 // -------------------------------------------------------------------------
-document.querySelectorAll(".popup__button--close").forEach(function (button) {
-  button.addEventListener("click", function () {
-    button.closest(".popup").classList.remove("popup--active");
-  })
+var mapPopup = document.querySelector(".map.popup");
+var writeUsPopup = document.querySelector(".write-us.popup");
+
+mapPopup.querySelector(".popup__button--close").addEventListener("click", function () {
+  mapPopup.classList.remove("popup--active");
+  document.querySelector(".contacts__map").focus();
+});
+
+writeUsPopup.querySelector(".popup__button--close").addEventListener("click", function () {
+  writeUsPopup.classList.remove("popup--active");
+  document.querySelector(".button.button--contacts").focus();
 });
 
 document.querySelector(".contacts__map").addEventListener("click", function (evt) {
   evt.preventDefault();
-  document.querySelector(".map.popup").classList.add("popup--active");
+  mapPopup.classList.add("popup--active");
+  mapPopup.querySelector(".popup__button--close").focus();
 });
 
 document.querySelector(".button--contacts").addEventListener("click", function (evt) {
   evt.preventDefault();
-  document.querySelector(".write-us.popup").classList.add("popup--active");
+  writeUsPopup.classList.add("popup--active");
+  writeUsPopup.querySelector(".popup__button--close").focus();
+});
+//----------------------------------------------------------------------------
+var promoSliderButtons = document.querySelectorAll(".promo-slider__button");
+var promoSliderList = document.querySelector(".promo-slider__list");
+
+var removePromoSliderActive = function () {
+  document.querySelector(".promo-slider__button--active").classList.remove("promo-slider__button--active");
+  document.querySelector(".promo-slider__slide--active").classList.remove("promo-slider__slide--active");
+}
+
+promoSliderButtons.forEach(function (button, i) {
+  button.addEventListener("click", function (evt) {
+    evt.preventDefault();
+
+    removePromoSliderActive();
+    button.classList.add("promo-slider__button--active");
+    promoSliderList.children[i].classList.add("promo-slider__slide--active");
+  })
+});
+//----------------------------------------------------------------------------
+var servicesSliderButtons = document.querySelector(".services__list-control").querySelectorAll(".button.button--slider");
+var servicesSliderList = document.querySelector(".services__list");
+
+var removeServicesSliderActive = function () {
+  document.querySelector(".services__list-control").querySelector(".button--slider--active").classList.remove("button--slider--active");
+  document.querySelector(".services__item--active").classList.remove("services__item--active");
+}
+
+servicesSliderButtons.forEach(function (button, i) {
+  button.addEventListener("click", function (evt) {
+    evt.preventDefault();
+
+    removeServicesSliderActive();
+    button.classList.add("button--slider--active");
+    servicesSliderList.children[i].classList.add("services__item--active");
+  })
 });
