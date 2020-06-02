@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="home-page">
   <div class="container">
     <header class="main-header main-header--long">
       <a class="logo" href="index.html">
@@ -33,34 +33,40 @@
         </div>
         <nav class="main-nav">
           <ul class="main-nav__list">
-            <li class="main-nav__item main-nav__item--dropdown">
-              <a href="catalog.html" class="main-nav__link main-nav__link--dropdown">Каталог товаров</a>
-              <div class="dropdown__list">
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Виртуальная реальность</a>
-                  </li>
-                  <li>
-                    <a href="catalog.html">Моноподы для селфи</a>
-                  </li>
-                  <li>
-                    <a href="">Экшн-камеры</a>
-                  </li>
-                </ul>
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Фитнес-браслеты</a>
-                  </li>
-                  <li>
-                    <a href="">Умные часы</a>
-                  </li>
-                </ul>
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Квадрокоптер</a>
-                  </li>
-                </ul>
-              </div>
+            <li class="main-nav__item">
+              <a href="" class="main-nav__link main-nav__link--dropdown">Каталог товаров</a>
+              <ul class="dropdown__list">
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Виртуальная реальность</a>
+                    </li>
+                    <li>
+                      <a href="catalog.html">Моноподы для селфи</a>
+                    </li>
+                    <li>
+                      <a href="">Экшн-камеры</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Фитнес-браслеты</a>
+                    </li>
+                    <li>
+                      <a href="">Умные часы</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Квадрокоптер</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li class="main-nav__item">
               <a href="" class="main-nav__link">Доставка</a>
@@ -348,15 +354,15 @@
     <form action="https://echo.htmlacademy.ru/" method="POST">
       <label class="popup__title">
         Ваше имя:
-        <input type="text" name="write-us-name" placeholder="Имя Фамилия">
+        <input type="text" name="write-us-name" placeholder="Имя Фамилия" required>
       </label>
       <label class="popup__title">
         Ваш e-mail:
-        <input type="email" name="write-us-email" placeholder="email@example.com">
+        <input type="email" name="write-us-email" placeholder="email@example.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
       </label>
       <label class="popup__title">
         Текст письма:
-        <textarea name="write-us-text" cols="760" rows="8" placeholder="В свободной форме"></textarea>
+        <textarea name="write-us-text" cols="760" rows="8" placeholder="В свободной форме" required></textarea>
       </label>
       <button class="button button--popup" type="submit">отправить</button>
     </form>

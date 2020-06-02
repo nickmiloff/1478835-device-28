@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="catalog-page">
   <div class="container">
     <header class="main-header main-header--catalog">
       <a class="logo" href="index.html">
@@ -37,35 +37,41 @@
           </a>
         </div>
         <nav class="main-nav">
-          <ul class="main-nav__list main-nav__item--dropdown">
+          <ul class="main-nav__list">
             <li class="main-nav__item">
-              <a href="catalog.html" class="main-nav__link main-nav__link--dropdown">Каталог товаров</a>
-              <div class="dropdown__list">
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Виртуальная реальность</a>
-                  </li>
-                  <li>
-                    <a href="catalog.html">Моноподы для селфи</a>
-                  </li>
-                  <li>
-                    <a href="">Экшн-камеры</a>
-                  </li>
-                </ul>
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Фитнес-браслеты</a>
-                  </li>
-                  <li>
-                    <a href="">Умные часы</a>
-                  </li>
-                </ul>
-                <ul class="dropdown__column">
-                  <li>
-                    <a href="">Квадрокоптер</a>
-                  </li>
-                </ul>
-              </div>
+              <a href="" class="main-nav__link main-nav__link--dropdown">Каталог товаров</a>
+              <ul class="dropdown__list">
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Виртуальная реальность</a>
+                    </li>
+                    <li>
+                      <a href="catalog.html">Моноподы для селфи</a>
+                    </li>
+                    <li>
+                      <a href="">Экшн-камеры</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Фитнес-браслеты</a>
+                    </li>
+                    <li>
+                      <a href="">Умные часы</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="dropdown__column">
+                    <li>
+                      <a href="">Квадрокоптер</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li class="main-nav__item">
               <a href="" class="main-nav__link">Доставка</a>
@@ -103,7 +109,7 @@
         <div class="catalog-content-wrapper">
           <section class="filter">
               <h2 class="filter__title">Фильтр:</h2>
-              <form action="https://echo.htmlacademy.ru" method="GET">
+              <form action="https://echo.htmlacademy.ru" method="POST">
                 <fieldset class="filter__item">
                     <h3 class="filter__subtitle">
                         Стоимость

@@ -34,6 +34,19 @@
         url("../fonts/opensans.woff") format("woff");
 }
 
+@keyframes open {
+    from {
+        height: 0;
+        width: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 :root {
     --basic-black: #000000;
     --basic-dark: #363636;
@@ -41,6 +54,8 @@
     --basic-grey: #464646;
     --basic-half-grey: #7E7E7E;
     --basic-grey-light: #E5E5E5;
+    --special-red-invalid: #F6DADA;
+    --special-black-popup: rgba(0, 0, 0, 0.4);
     --special-dark: rgba(0, 0, 0, 0.6);
     --special-dark-light: rgba(0, 0, 0, .3);
     --special-white-light: rgba(255, 255, 255, 0.3);
@@ -50,7 +65,8 @@
     --special-grey-pin: #C4C4C4;
     --special-grey-pagination: #D9D9D9;
     --special-grey-popup: #F2F2F2;
-    --special-grey-popup-light: rgba(0, 0, 0, 0.4);
+    --special-grey-popup-light: #F2F2F2;
+    --special-grey-popup-dark: #EAEAEA;
     --special-yellow: #F7E296;
     --special-green: #91C92F;
     --special-yellow-dark: #F0C52E;
@@ -79,6 +95,7 @@ a {
   }
 
 .main-nav__list,
+.dropdown__list,
 .dropdown__column,
 .promo-slider__list,
 .popular-categories__list,
@@ -123,6 +140,7 @@ a {
 .services__item .title,
 .about-us .title,
 .contacts .title {
+    max-width: 560px;
     letter-spacing: 0.2em;
 }
 
@@ -249,7 +267,15 @@ a {
 }
 
 .button--popup::after {
-    background-color: var(--special-yellow);
+    opacity: 0.5;
+}
+
+.button--popup:hover::after {
+    opacity: 1;
+}
+
+.button--popup:active::after {
+    opacity: 0.3;
 }
 
 .button:focus {
@@ -290,6 +316,15 @@ a {
     background-color: transparent;
     background-image: url("../img/modal-close.svg");
     background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+.popup__button--close:hover {
+    opacity: 1;
+}
+
+.popup__button--close:active {
+    opacity: 0.3;
 }
 
 .popup input,
@@ -346,7 +381,7 @@ body {
 }
 
 .main-header--long {
-    padding-bottom: 116px;
+    padding-bottom: 120px;
 }
 
 .main-header a {
@@ -479,6 +514,7 @@ body {
 
 .main-nav__list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 0;
     margin: 0;
@@ -500,17 +536,22 @@ body {
 }
 
 .dropdown__list:focus-within,
-.main-nav__item--dropdown:hover .dropdown__list {
+.main-nav__link--dropdown:hover + .dropdown__list,
+.dropdown__list:hover {
     z-index: 2;
     opacity: 1;
+    animation: open 0.2s;
 }
 
 .dropdown__list {
     position: absolute;
+    top: 22px;
     left: -60px;
-    z-index: -1;
     display: flex;
+    z-index: -1;
+    opacity: 0;
     width: 1160px;
+
     font-family: "Open Sans", "Arial", sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -520,13 +561,9 @@ body {
     white-space: nowrap;
     text-transform: none;
 
-    opacity: 0;
-
-    padding: 10px 60px 42px 60px;
+    padding: 14px 60px 42px 60px;
 
     background-color: var(--special-yellow);
-
-    transition: opacity 0.4s ease;
 }
 
 .dropdown__column {
@@ -565,20 +602,24 @@ body {
     opacity: 1;
 }
 
+.main-nav__link--dropdown {
+    position: relative;
+    padding-right: 40px;
+}
+
 .main-nav__link--dropdown::after {
-    display: inline-block;
+    content: "";
+
+    display: block;
     width: 22px;
     height: 22px;
-    margin-left: 18px;
-    margin-top: 4px;
-    
-    content: "Открыть список категорий товаров";
-    font-size: 0;
+
+    position: absolute;
+    top: 4px;
+    right: 0;
 
     background-image: url("../img/plus.svg");
     background-repeat: no-repeat;
-
-    vertical-align: top;
 
     opacity: 0.3;
 }
@@ -656,7 +697,7 @@ body {
     z-index: 1;
     width: 72px;
     right: 88px;
-    top: 358px;
+    bottom: 141px;
 }
 
 .promo-slider__button {
@@ -745,14 +786,17 @@ body {
 
 .popular-categories__list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 0;
+    margin-right: -40px;
     padding: 0;
 }
 
 .popular-categories__item {
     position: relative;
     width: 160px;
+    margin-right: 40px;
 }
 
 .popular-item__link {
@@ -775,7 +819,7 @@ body {
     margin-top: 69px;
 
     background-image: linear-gradient(to bottom, transparent 115px, var(--basic-grey-light) 115px);
-    background-size: auto 403px;
+    background-size: auto;
     background-repeat: no-repeat;
     background-position-y: top;
 }
@@ -856,6 +900,7 @@ body {
 
 .logos__list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 0;
 }
@@ -933,7 +978,8 @@ body {
     margin-bottom: 40px;
 }
 
-.contacts__map img {
+.contacts__map {
+    display: block;
     margin-bottom: 72px;
 }
 
@@ -949,8 +995,8 @@ body {
 }
 
 .main-footer {
-    height: 324px;
     padding-top: 46px;
+    padding-bottom: 60px;
     background-color: var(--basic-dark);
 }
 
@@ -1103,6 +1149,15 @@ body {
     opacity: 0.3;
 }
 
+.pages-nav__item:last-child .pages-nav__link {
+    cursor: default;
+}
+
+.pages-nav__item:last-child .pages-nav__link:hover,
+.pages-nav__item:last-child .pages-nav__link:active {
+    opacity: 0.3;
+}
+
 .pages-nav__item:not(:first-child) {
     margin-left: 40px;
 }
@@ -1110,7 +1165,7 @@ body {
 .catalog-content-wrapper {
     display: grid;
     grid-template-columns: 328px 760px;
-    grid-template-rows: 70px min-content;
+    grid-template-rows: min-content min-content;
     column-gap: 72px;
     row-gap: 70px;
 }
@@ -1272,9 +1327,9 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.filter__checkbox:focus + .filter__checkbox-label,
-.filter__radio:focus + .filter__radio-label{
-    box-shadow: 0 0 2px 2px var(--special-yellow-dark);
+.filter__checkbox:focus + .filter__checkbox-label::before,
+.filter__radio:focus + .filter__radio-label::before{
+    box-shadow: 0 0 0 2px var(--special-yellow-dark);
 }
 
 .filter__checkbox:disabled + .filter__checkbox-label,
@@ -1318,8 +1373,9 @@ input::-webkit-inner-spin-button {
 .sort {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 70px;
+    min-height: 70px;
     background-color: var(--basic-grey-light);
 }
 
@@ -1337,6 +1393,7 @@ input::-webkit-inner-spin-button {
 .sort-by__list, 
 .sort-direction__list {
     display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 }
@@ -1346,12 +1403,12 @@ input::-webkit-inner-spin-button {
 }
 
 .sort .filter__title {
+    margin: 0;
     margin-right: 74px;
 }
 
 .sort-direction__list {
     margin-left: auto;
-    margin-right: -3px;
 }
 
 .sort-direction__list li {
@@ -1496,7 +1553,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     width: 760px;
-
+    min-height: 70px;
 
     margin-top: -8px;
 
@@ -1507,8 +1564,8 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 70px;
+    min-width: 120px;
+    max-width: 33%;
     background-color: transparent;
 }
 
@@ -1522,8 +1579,9 @@ input::-webkit-inner-spin-button {
 
 .pagination__list {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 70px;
+    max-width: 33%;
     margin: 0;
     padding: 0;
 }
@@ -1565,6 +1623,25 @@ input::-webkit-inner-spin-button {
     padding: 17px 20px;
     margin-top: 10px;
     background-color: var(--special-grey-popup);
+    color: var(--special-black-popup)
+}
+
+.write-us.popup input:hover,
+.write-us.popup textarea:hover {
+    background-color: var(--special-grey-popup-dark);
+}
+
+.write-us.popup input:focus,
+.write-us.popup textarea:focus {
+    background-color: transparent;
+    color: var(--basic-dark);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--special-yellow);
+}
+
+.write-us.popup input:invalid,
+.write-us.popup textarea:invalid {
+    background-color: var(--special-red-invalid);
 }
 
 .write-us.popup textarea {
@@ -1600,7 +1677,7 @@ input::-webkit-inner-spin-button {
 .pages-nav__link:hover,
 .filter__checkbox:not(:disabled) + .filter__checkbox-label:hover::before,
 .filter__radio:not(:disabled) + .filter__radio-label:hover::before,
-.sort-by__link:not(.sort-by__link--active):hover,
+.sort-by__link:hover,
 .sort-direction__link:hover,
 .pagination__link:hover {
     opacity: 0.6;
@@ -1629,6 +1706,18 @@ input::-webkit-inner-spin-button {
 .socials__link:active,
 .pages-nav__link:active {
     opacity: 0.1;
+}
+
+.logo--footer-device::-moz-focus-inner,
+.socials__link::-moz-focus-inner,
+.logo--html-academy::-moz-focus-inner {
+    border: 0;
+}
+
+.logo--footer-device:focus,
+.socials__link:focus,
+.logo--html-academy:focus {
+    outline: 2px dotted var(--basic-white);
 }
 
 .user-nav__link:not(.user-nav__link--exit)::before {
