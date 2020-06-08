@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>HTML Academy: Девайс - Напишите нам</title>
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+
+    <section class="write-us modal modal--active">
+        <h2 class="visually-hidden">Форма обратной связи</h2>
+        <a href="index.html" class="modal__button--close" aria-label="Закрыть"></a>
+        <form action="https://echo.htmlacademy.ru/" method="POST">
+          <label class="modal__title">
+            Ваше имя:
+            <input type="text" name="write-us-name" placeholder="Имя Фамилия">
+          </label>
+          <label class="modal__title">
+            Ваш e-mail:
+            <input type="email" name="write-us-email" placeholder="email@example.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          </label>
+          <label class="modal__title">
+            Текст письма:
+            <textarea name="write-us-text" cols="760" rows="8" placeholder="В свободной форме"></textarea>
+          </label>
+          <button class="button button--modal" type="submit">отправить</button>
+        </form>
+      </section>
+
+</body>
+</html>

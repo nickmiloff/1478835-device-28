@@ -4,12 +4,12 @@ if (document.body.id == "home-page") {
   var promoSliderList = document.querySelector(".promo-slider__list");
   var servicesSliderList = document.querySelector(".services__list");
   var servicesSliderControl = document.querySelector(".services__list-control");
-  var mapPopup = document.querySelector(".map.popup");
-  var mapPopupOpenButton = document.querySelector(".contacts__map");
-  var mapPopupCloseButton = mapPopup.querySelector(".popup__button--close");
-  var writeUsPopup = document.querySelector(".write-us.popup");
-  var writeUsPopupOpenButton =  document.querySelector(".button.button--contacts");
-  var writeUsPopupCloseButton = writeUsPopup.querySelector(".popup__button--close");
+  var mapModal = document.querySelector(".map.modal");
+  var mapModalOpenButton = document.querySelector(".contacts__map");
+  var mapModalCloseButton = mapModal.querySelector(".modal__button--close");
+  var writeUsModal = document.querySelector(".write-us.modal");
+  var writeUsModalOpenButton =  document.querySelector(".button.button--contacts");
+  var writeUsModalCloseButton = writeUsModal.querySelector(".modal__button--close");
 
   var removePromoSliderActive = function () {
     document.querySelector(".promo-slider__button--active").classList.remove("promo-slider__button--active");
@@ -41,26 +41,26 @@ if (document.body.id == "home-page") {
     })
   });
 
-  mapPopupCloseButton.addEventListener("click", function () {
-    mapPopup.classList.remove("popup--active");
-    mapPopupOpenButton.focus();
+  mapModalCloseButton.addEventListener("click", function () {
+    mapModal.classList.remove("modal--active");
+    mapModalOpenButton.focus();
   });
 
-  mapPopupOpenButton.addEventListener("click", function (evt) {
+  mapModalOpenButton.addEventListener("click", function (evt) {
     evt.preventDefault();
-    mapPopup.classList.add("popup--active");
-    mapPopupCloseButton.focus();
+    mapModal.classList.add("modal--active");
+    mapModalCloseButton.focus();
   });
       
-  writeUsPopupCloseButton.addEventListener("click", function () {
-    writeUsPopup.classList.remove("popup--active");
-    writeUsPopupOpenButton.focus();
+  writeUsModalCloseButton.addEventListener("click", function () {
+    writeUsModal.classList.remove("modal--active");
+    writeUsModalOpenButton.focus();
   });
   
-  writeUsPopupOpenButton.addEventListener("click", function (evt) {
+  writeUsModalOpenButton.addEventListener("click", function (evt) {
     evt.preventDefault();
-    writeUsPopup.classList.add("popup--active");
-    writeUsPopupCloseButton.focus();
+    writeUsModal.classList.add("modal--active");
+    writeUsModalCloseButton.focus();
   });
 }
 
