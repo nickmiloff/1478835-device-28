@@ -15,15 +15,15 @@
         <form action="https://echo.htmlacademy.ru/" method="POST">
           <label class="modal__title">
             Ваше имя:
-            <input type="text" name="write-us-name" placeholder="Имя Фамилия">
+            <input class="write-us__input--separate" type="text" name="write-us-name" placeholder="Имя Фамилия" required>
           </label>
           <label class="modal__title">
             Ваш e-mail:
-            <input type="email" name="write-us-email" placeholder="email@example.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <input class="write-us__input--separate" type="email" name="write-us-email" placeholder="email@example.com" required>
           </label>
           <label class="modal__title">
             Текст письма:
-            <textarea name="write-us-text" cols="760" rows="8" placeholder="В свободной форме"></textarea>
+            <textarea class="write-us__input--separate" name="write-us-text" cols="760" rows="8" placeholder="В свободной форме" required></textarea>
           </label>
           <button class="button button--modal" type="submit">отправить</button>
         </form>

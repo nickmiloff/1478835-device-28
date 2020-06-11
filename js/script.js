@@ -4,12 +4,19 @@ if (document.body.id == "home-page") {
   var promoSliderList = document.querySelector(".promo-slider__list");
   var servicesSliderList = document.querySelector(".services__list");
   var servicesSliderControl = document.querySelector(".services__list-control");
+  var modal = document.querySelector(".modal");
   var mapModal = document.querySelector(".map.modal");
   var mapModalOpenButton = document.querySelector(".contacts__map");
   var mapModalCloseButton = mapModal.querySelector(".modal__button--close");
   var writeUsModal = document.querySelector(".write-us.modal");
+  var writeUsModalForm = writeUsModal.querySelector("form");
   var writeUsModalOpenButton =  document.querySelector(".button.button--contacts");
   var writeUsModalCloseButton = writeUsModal.querySelector(".modal__button--close");
+  var writeUsModalNameField = writeUsModal.querySelector(".write-us__name");
+  var writeUsModalEmailField = writeUsModal.querySelector(".write-us__email");
+  var writeUsModalTextField = writeUsModal.querySelector(".write-us__text");
+
+  var ESC_KEYCODE = 27;
 
   var removePromoSliderActive = function () {
     document.querySelector(".promo-slider__button--active").classList.remove("promo-slider__button--active");
@@ -41,6 +48,19 @@ if (document.body.id == "home-page") {
     })
   });
 
+  document.addEventListener("keydown", function (evt) {
+    if (evt.keyCode === ESC_KEYCODE) {
+      if (mapModal.classList.contains("modal--active")) {
+        mapModal.classList.remove("modal--active");
+        mapModalOpenButton.focus();
+      }
+      if (writeUsModal.classList.contains("modal--active")) {
+        writeUsModal.classList.remove("modal--active");
+        writeUsModalOpenButton.focus();
+      }
+    }
+  });
+
   mapModalCloseButton.addEventListener("click", function () {
     mapModal.classList.remove("modal--active");
     mapModalOpenButton.focus();
@@ -59,8 +79,58 @@ if (document.body.id == "home-page") {
   
   writeUsModalOpenButton.addEventListener("click", function (evt) {
     evt.preventDefault();
+    writeUsModal.classList.remove("modal--shake");
     writeUsModal.classList.add("modal--active");
     writeUsModalCloseButton.focus();
+  });
+
+  writeUsModalNameField.addEventListener("input", function () {
+    if (writeUsModalNameField.checkValidity() === false && !writeUsModalNameField.classList.contains("invalid")) {
+      writeUsModalNameField.classList.add("invalid");
+    }
+    else if (writeUsModalNameField.checkValidity() === true && writeUsModalNameField.classList.contains("invalid")) {
+      writeUsModalNameField.classList.remove("invalid");
+    }
+  });
+
+  writeUsModalEmailField.addEventListener("input", function () {
+    if (writeUsModalEmailField.checkValidity() === false && !writeUsModalEmailField.classList.contains("invalid")) {
+      writeUsModalEmailField.classList.add("invalid");
+    }
+    else if (writeUsModalEmailField.checkValidity() === true && writeUsModalEmailField.classList.contains("invalid")) {
+      writeUsModalEmailField.classList.remove("invalid");
+    }
+  });
+
+  writeUsModalTextField.addEventListener("input", function () {
+    if (writeUsModalTextField.checkValidity() === false && !writeUsModalTextField.classList.contains("invalid")) {
+      writeUsModalTextField.classList.add("invalid");
+    }
+    else if (writeUsModalTextField.checkValidity() === true && writeUsModalTextField.classList.contains("invalid")) {
+      writeUsModalTextField.classList.remove("invalid");
+    }
+  });
+
+  writeUsModalForm.addEventListener("submit", function (evt) {
+    if (writeUsModalForm.checkValidity() === false) {
+      evt.preventDefault();
+
+      if (writeUsModalNameField.checkValidity() === false && !writeUsModalNameField.classList.contains("invalid")) {
+        writeUsModalNameField.classList.add("invalid");
+      }
+
+      if (writeUsModalEmailField.checkValidity() === false && !writeUsModalEmailField.classList.contains("invalid")) {
+        writeUsModalEmailField.classList.add("invalid");
+      }
+
+      if (writeUsModalTextField.checkValidity() === false && !writeUsModalTextField.classList.contains("invalid")) {
+        writeUsModalTextField.classList.add("invalid");
+      }
+
+      writeUsModal.classList.remove("modal--shake");
+      void writeUsModal.offsetWidth;
+      writeUsModal.classList.add("modal--shake");
+    }
   });
 }
 
