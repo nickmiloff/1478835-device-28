@@ -28,6 +28,17 @@ if (document.body.id == "home-page") {
     document.querySelector(".services__item--active").classList.remove("services__item--active");
   }
 
+  var checkInputValidity = function (input) {
+    if (input.checkValidity() === false) {
+      input.classList.add("invalid");
+      return false;
+    }
+    else if (input.checkValidity() === true) {
+      input.classList.remove("invalid");
+      return true;
+    }
+  }
+
   document.querySelectorAll(".promo-slider__button").forEach(function (button, i) {
     button.addEventListener("click", function (evt) {
       evt.preventDefault();
@@ -48,7 +59,7 @@ if (document.body.id == "home-page") {
     })
   });
 
-  document.addEventListener("keydown", function (evt) {
+  window.addEventListener("keydown", function (evt) {
     if (evt.keyCode === ESC_KEYCODE) {
       if (mapModal.classList.contains("modal--active")) {
         mapModal.classList.remove("modal--active");
@@ -81,51 +92,46 @@ if (document.body.id == "home-page") {
     evt.preventDefault();
     writeUsModal.classList.remove("modal--shake");
     writeUsModal.classList.add("modal--active");
-    writeUsModalCloseButton.focus();
+    var localName = localStorage.getItem("name");
+    var localEmail = localStorage.getItem("email");
+    if (localName) {
+      writeUsModalNameField.value = localName;
+    }
+    if (localEmail) {
+      writeUsModalEmailField.value = localEmail
+    }
+    if (!localName) {
+      writeUsModalNameField.focus();
+    } else if (!localEmail) {
+      writeUsModalEmailField.focus();
+    } else {
+      writeUsModalTextField.focus();
+    }
   });
 
   writeUsModalNameField.addEventListener("input", function () {
-    if (writeUsModalNameField.checkValidity() === false && !writeUsModalNameField.classList.contains("invalid")) {
-      writeUsModalNameField.classList.add("invalid");
-    }
-    else if (writeUsModalNameField.checkValidity() === true && writeUsModalNameField.classList.contains("invalid")) {
-      writeUsModalNameField.classList.remove("invalid");
-    }
+    checkInputValidity(writeUsModalNameField);
   });
 
   writeUsModalEmailField.addEventListener("input", function () {
-    if (writeUsModalEmailField.checkValidity() === false && !writeUsModalEmailField.classList.contains("invalid")) {
-      writeUsModalEmailField.classList.add("invalid");
-    }
-    else if (writeUsModalEmailField.checkValidity() === true && writeUsModalEmailField.classList.contains("invalid")) {
-      writeUsModalEmailField.classList.remove("invalid");
-    }
+    checkInputValidity(writeUsModalEmailField);
   });
 
   writeUsModalTextField.addEventListener("input", function () {
-    if (writeUsModalTextField.checkValidity() === false && !writeUsModalTextField.classList.contains("invalid")) {
-      writeUsModalTextField.classList.add("invalid");
-    }
-    else if (writeUsModalTextField.checkValidity() === true && writeUsModalTextField.classList.contains("invalid")) {
-      writeUsModalTextField.classList.remove("invalid");
-    }
+    checkInputValidity(writeUsModalTextField);
   });
 
   writeUsModalForm.addEventListener("submit", function (evt) {
     if (writeUsModalForm.checkValidity() === false) {
       evt.preventDefault();
 
-      if (writeUsModalNameField.checkValidity() === false && !writeUsModalNameField.classList.contains("invalid")) {
-        writeUsModalNameField.classList.add("invalid");
+      if (checkInputValidity(writeUsModalNameField)) {
+        localStorage.setItem("name", writeUsModalNameField.value);
       }
-
-      if (writeUsModalEmailField.checkValidity() === false && !writeUsModalEmailField.classList.contains("invalid")) {
-        writeUsModalEmailField.classList.add("invalid");
+      if (checkInputValidity(writeUsModalEmailField)) {
+        localStorage.setItem("email", writeUsModalEmailField.value);
       }
-
-      if (writeUsModalTextField.checkValidity() === false && !writeUsModalTextField.classList.contains("invalid")) {
-        writeUsModalTextField.classList.add("invalid");
-      }
+      checkInputValidity(writeUsModalTextField);
 
       writeUsModal.classList.remove("modal--shake");
       void writeUsModal.offsetWidth;
@@ -165,7 +171,7 @@ if (document.body.id == "catalog-page") {
     pin: document.querySelector(".value-level__pin--second"),
     value: document.querySelector(".value-level__value--second"),
     label: document.querySelector(".value-level__label--second"),
-    getX: function (x, em) {
+    getX: function (x, mx = 0) {
             if (x < MIN) {
               x = MIN;
             }
@@ -175,13 +181,12 @@ if (document.body.id == "catalog-page") {
             if (x < firstPin.pin.offsetLeft) {
               x = firstPin.pin.offsetLeft;
             }
-            if (firstPin.pin.offsetLeft === secondPin.pin.offsetLeft && (secondPin.pin.offsetLeft - x) > -1) {
-              x = firstPin.pin.offsetLeft + em.movementX;
+            if (firstPin.pin.offsetLeft === secondPin.pin.offsetLeft && (secondPin.pin.offsetLeft - x) > -1 && mx != 0) {
+              x = firstPin.pin.offsetLeft + mx;
               x = firstPin.getX(x);
               firstPin.value.value = Math.floor(x / MAX * maxPrice);
             }
           
-
             this.pin.style.left = x + "px";
             depth.style.right = (MAX - x) + "px";
 
@@ -191,6 +196,16 @@ if (document.body.id == "catalog-page") {
   var MIN = 0;
   var MAX = line.offsetWidth - firstPin.pin.offsetWidth;
   var maxPrice = firstPin.value.max;
+
+  var toValue = function (pin) {
+    if (pin.classList.contains('value-level__pin--first')) {return firstPin.value;}
+    else {return secondPin.value;}
+  }
+
+  var checkDistance = function (count) {
+    if (secondPin.value.value - firstPin.value.value < count * 2) return false;
+    return true;
+  }
 
   var sliderHandler = function (evt) {
     evt.preventDefault();
@@ -204,7 +219,7 @@ if (document.body.id == "catalog-page") {
         firstPin.value.value = Math.floor(x / MAX * maxPrice);
       } else {
         var x = secondPin.pin.offsetLeft + em.movementX;
-        x = secondPin.getX(x, em);
+        x = secondPin.getX(x, em.movementX);
         secondPin.value.value = Math.floor(x / MAX * maxPrice);
       };
     };
@@ -220,27 +235,37 @@ if (document.body.id == "catalog-page") {
     document.addEventListener("mouseup", mouseUpHandler);
   };
 
-  var numberChange = function (evt) {
-    if (evt.target.classList.contains('value-level__value--first')) {
+  var numberChange = function (index) {
+    if (index === 0) {
       var x = firstPin.value.value * MAX / maxPrice;
       x = firstPin.getX(x);
       if (x < (firstPin.value.value * MAX / maxPrice)) {
-        firstPin.value.value = Math.floor(x / MAX * maxPrice);
+        firstPin.value.value = secondPin.value.value;
       }
     } else {
       var x = secondPin.value.value * MAX / maxPrice;
       x = secondPin.getX(x);
-      if (x < (secondPin.value.value * MAX / maxPrice)) {
-        secondPin.value.value = Math.floor(x / MAX * maxPrice);
+      if (x > (secondPin.value.value * MAX / maxPrice)) {
+        secondPin.value.value = firstPin.value.value;
       }
     }
   };
 
-  document.querySelectorAll(".value-level__value").forEach(function (value) {
-    value.addEventListener("change", function (evt) { numberChange(evt); })
+  document.querySelectorAll(".value-level__value").forEach(function (value, index) {
+    value.addEventListener("change", function () { numberChange(index); })
   });
 
-  document.querySelectorAll(".value-level__pin").forEach(function (pin) {
-    pin.addEventListener("mousedown", function (evt) { sliderHandler(evt); })
+  document.querySelectorAll(".value-level__pin").forEach(function (pin, index) {
+    pin.addEventListener("mousedown", function (evt) { sliderHandler(evt); });
+    pin.addEventListener("keydown", function (evt) {
+      if (evt.keyCode === 39) {
+        toValue(pin).value = parseInt(toValue(pin).value) + 10;
+        numberChange(index);
+      }
+      if (evt.keyCode === 37) {
+        toValue(pin).value = parseInt(toValue(pin).value) - 10;
+        numberChange(index);
+      }
+    });
   });
 }
