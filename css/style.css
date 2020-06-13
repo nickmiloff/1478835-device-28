@@ -781,7 +781,7 @@ body {
     justify-content: space-between;
     position: absolute;
     z-index: 1;
-    width: 72px;
+    min-width: 72px;
     right: 88px;
     bottom: 141px;
 }

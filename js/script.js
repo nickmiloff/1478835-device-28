@@ -198,13 +198,11 @@ if (document.body.id == "catalog-page") {
   var maxPrice = firstPin.value.max;
 
   var toValue = function (pin) {
-    if (pin.classList.contains('value-level__pin--first')) {return firstPin.value;}
-    else {return secondPin.value;}
-  }
-
-  var checkDistance = function (count) {
-    if (secondPin.value.value - firstPin.value.value < count * 2) return false;
-    return true;
+    if (pin.classList.contains('value-level__pin--first')) {
+      return firstPin.value;
+    } else {
+      return secondPin.value;
+    }
   }
 
   var sliderHandler = function (evt) {
@@ -235,6 +233,39 @@ if (document.body.id == "catalog-page") {
     document.addEventListener("mouseup", mouseUpHandler);
   };
 
+  var mobileSliderHandler = function (evt) {
+    evt.preventDefault();
+
+    var touchStart = evt.changedTouches[0].pageX;
+
+    var touchMoveHandler = function (tm) {
+
+      var touchCurrent = tm.changedTouches[0].pageX - touchStart;
+
+      if (evt.target.classList.contains('value-level__pin--first')) {
+        var x = firstPin.pin.offsetLeft + touchCurrent;
+        x = firstPin.getX(x);
+        firstPin.value.value = Math.floor(x / MAX * maxPrice);
+      } else {
+        var x = secondPin.pin.offsetLeft + touchCurrent;
+        x = secondPin.getX(x, touchCurrent);
+        secondPin.value.value = Math.floor(x / MAX * maxPrice);
+      };
+
+      touchStart = tm.changedTouches[0].pageX;
+    };
+
+    var touchEndHandler = function (te) {
+      te.preventDefault();
+
+      document.removeEventListener("touchmove", touchMoveHandler);
+      document.removeEventListener("touchend", touchEndHandler);
+    }
+
+    document.addEventListener("touchmove", touchMoveHandler);
+    document.addEventListener("touchend", touchEndHandler);
+  }
+
   var numberChange = function (index) {
     if (index === 0) {
       var x = firstPin.value.value * MAX / maxPrice;
@@ -257,6 +288,7 @@ if (document.body.id == "catalog-page") {
 
   document.querySelectorAll(".value-level__pin").forEach(function (pin, index) {
     pin.addEventListener("mousedown", function (evt) { sliderHandler(evt); });
+    pin.addEventListener("touchstart", function (evt) { mobileSliderHandler(evt);})
     pin.addEventListener("keydown", function (evt) {
       if (evt.keyCode === 39) {
         toValue(pin).value = parseInt(toValue(pin).value) + 10;
