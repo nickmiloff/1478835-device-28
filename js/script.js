@@ -52,7 +52,7 @@ if (document.body.id == "home-page") {
   servicesSliderControl.querySelectorAll(".button.button--slider").forEach(function (button, i) {
     button.addEventListener("click", function (evt) {
       evt.preventDefault();
-  
+
       removeServicesSliderActive();
       button.classList.add("button--slider--active");
       servicesSliderList.children[i].classList.add("services__item--active");
@@ -82,12 +82,12 @@ if (document.body.id == "home-page") {
     mapModal.classList.add("modal--active");
     mapModalCloseButton.focus();
   });
-      
+
   writeUsModalCloseButton.addEventListener("click", function () {
     writeUsModal.classList.remove("modal--active");
     writeUsModalOpenButton.focus();
   });
-  
+
   writeUsModalOpenButton.addEventListener("click", function (evt) {
     evt.preventDefault();
     writeUsModal.classList.remove("modal--shake");
@@ -186,7 +186,7 @@ if (document.body.id == "catalog-page") {
               x = firstPin.getX(x);
               firstPin.value.value = Math.floor(x / MAX * maxPrice);
             }
-          
+
             this.pin.style.left = x + "px";
             depth.style.right = (MAX - x) + "px";
 
@@ -224,6 +224,8 @@ if (document.body.id == "catalog-page") {
 
     var mouseUpHandler = function (eu) {
       eu.preventDefault();
+
+      console.log(firstPin.value);
 
       document.removeEventListener("mousemove", mouseMoveHandler);
       document.removeEventListener("mouseup", mouseUpHandler);
